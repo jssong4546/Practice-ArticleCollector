@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const fs = require("fs");
 
 async function writeFile(filename, body) {
@@ -8,6 +9,7 @@ async function writeFile(filename, body) {
         reject(err);
       } else {
         resolve(body);
+        console.log(body);
       }
     });
   });
