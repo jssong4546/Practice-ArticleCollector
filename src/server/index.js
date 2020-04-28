@@ -14,6 +14,7 @@ app.use('/api/data', dataRouter);
 
 app.listen(8080, () => {
   if (process.env.NODE_ENV !== 'test') {
+    // eslint-disable-next-line no-console
     console.log('Listening on port 8080!');
   }
 });

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const express = require('express');
 const fs = require('fs');
 const jsdom = require('jsdom');
@@ -16,10 +17,12 @@ router.get('/:line', async (req, res) => {
     fileHelper
       .readFile(filename)
       .then((data) =>
-        res.status(200).send({ id: req.params.line, body: data, status: '200' })
+        res.status(200).send({ id: req.params.line, body: data, status: 'ok' })
       );
   } else {
-    res.status(502).send({ id: req.params.line, status: '502' });
+    res
+      .status(200)
+      .send({ id: req.params.line, body: null, status: 'nonexist' });
   }
 
   // TODO : Help function을 이용하여, 주어진 filename의 내용을 읽을 수 있도록 구현하세요.
@@ -31,13 +34,13 @@ router.get('/:line', async (req, res) => {
 // POST /data/{lineNo}
 router.post('/:line', async (req, res) => {
   const lineNo = req.params.line;
-  let url = await fileHelper.readLineFromSourceList(lineNo);
-  let article = await fetchHelper.retrieveArticle(url);
+  const url = await fileHelper.readLineFromSourceList(lineNo);
+  const article = await fetchHelper.retrieveArticle(url);
   const dom = new JSDOM(article);
-  let body = dom.window.document.querySelector('article').textContent;
+  const body = dom.window.document.querySelector('article').textContent;
   fileHelper.writeFile(`./data/${lineNo}.txt`, body);
 
-  res.status(201).send('ok');
+  res.status(200).send('ok');
 
   // TODO : Help function을 이용하여, 주어진 filename에 내용을 저장할 수 있도록 구현하세요.
   /*
