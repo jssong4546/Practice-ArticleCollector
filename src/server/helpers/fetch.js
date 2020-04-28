@@ -1,14 +1,15 @@
 const https = require("https");
 
 async function retrieveArticle(url) {
+  // TODO: retrieve the html string from given url and return as promise
   return new Promise((resolve, reject) => {
     https.get(url, (res) => {
-      let data = "";
+      let body = "";
       res.on("data", (chunk) => {
-        data += chunk;
+        body += chunk.toString();
       });
       res.on("end", () => {
-        resolve(data);
+        resolve(body);
       });
       res.on("error", (err) => {
         reject(err);
