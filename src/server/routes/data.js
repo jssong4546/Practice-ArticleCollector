@@ -37,7 +37,8 @@ router.post('/:line', async (req, res) => {
   const url = await fileHelper.readLineFromSourceList(lineNo);
   const article = await fetchHelper.retrieveArticle(url);
   const dom = new JSDOM(article);
-  const body = dom.window.document.querySelector('article').textContent;
+
+  const body = dom.window.document.querySelector('body').textContent;
   fileHelper.writeFile(`./data/${lineNo}.txt`, body);
 
   res.status(200).send('ok');

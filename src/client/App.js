@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './app.css';
 import Modal from './Modal/Modal';
+import ReactHtmlParser from 'react-html-parser';
 
 export default class App extends Component {
   state = {
@@ -121,14 +122,14 @@ export default class App extends Component {
             <button onClick={this.toggleMode.bind(this)}>편집</button>
           </header>
           <ul>{lis}</ul>
-          <code
+          <div
             id="content"
             className={
               this.state.currentItem.status === 'nonexist' ? 'hidden' : ''
             }
           >
-            {this.state.currentItem.body}
-          </code>
+            {ReactHtmlParser(this.state.currentItem.body)}
+          </div>
           <div
             id="modal"
             className={
