@@ -1,3 +1,2 @@
 https://medium.com/@songal4546/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-queue-stack-in-javascript-e5c43673d061
-https://medium.com/@songal4546/react%EB%9E%80-props-82a031a393fb
-https://medium.com/amhocode/react-%EC%9E%85%EB%AC%B8%EC%9E%90%EB%9D%BC%EB%A9%B4-%EA%BC%AD-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EA%B8%B0%EC%B4%88-%EA%B0%9C%EB%85%90-5%EA%B0%80%EC%A7%80-component-props-state-life-cycle-lifting-state-up-95a416241ffe
+https://medium.com/@chayathilakumarai/how-to-insert-source-code-to-medium-articles-ca4f40da5e6e

@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import './app.css';
-import Modal from './Modal/Modal';
+import React, { Component } from "react";
+import "./app.css";
+import Modal from "./Modal/Modal";
+import parse from "html-react-parser";
 
 export default class App extends Component {
   state = {
@@ -27,7 +28,7 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    fetch('/api/source')
+    fetch("/api/source")
       .then((res) => res.text())
       .then((t) => {
         this.setState({ sources: t });
@@ -36,11 +37,11 @@ export default class App extends Component {
 
   handleClickSaveSource() {
     this.toggleMode();
-    fetch('/api/source', {
-      method: 'POST',
+    fetch("/api/source", {
+      method: "POST",
       headers: {
-        Accept: 'text/plain',
-        'Content-Type': 'text/plain',
+        Accept: "text/plain",
+        "Content-Type": "text/plain",
       },
       body: this.state.sources,
     });
@@ -63,15 +64,15 @@ export default class App extends Component {
     this.setState({ nowSaving: true });
 
     fetch(`/api/data/${this.state.currentItem.id}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        Accept: 'text/plain',
-        'Content-Type': 'text/plain',
+        Accept: "text/plain",
+        "Content-Type": "text/plain",
       },
     })
       .then((res) => res.text())
       .then((text) => {
-        if (text === 'ok') {
+        if (text === "ok") {
           this.setState({ nowSaving: false });
           this.handleClickItem(this.state.currentItem.id);
         }
@@ -98,12 +99,12 @@ export default class App extends Component {
 
   render() {
     const { sources } = this.state;
-    let lis = '';
+    let lis = "";
 
     if (sources) {
-      lis = sources.split('\n').map((line, i) => (
+      lis = sources.split("\n").map((line, i) => (
         <li
-          className={this.state.currentItem.id === String(i) ? 'active' : ''}
+          className={this.state.currentItem.id === String(i) ? "active" : ""}
           key={i}
         >
           <a onClick={this.handleClickItem.bind(this, i)}>
@@ -112,11 +113,10 @@ export default class App extends Component {
         </li>
       ));
     }
-
     return (
       <div>
         <h3>article collector (for medium blog)</h3>
-        <div className={this.state.nowEditing ? 'hidden' : ''}>
+        <div className={this.state.nowEditing ? "hidden" : ""}>
           <header>
             <button onClick={this.toggleMode.bind(this)}>편집</button>
           </header>
@@ -124,15 +124,15 @@ export default class App extends Component {
           <code
             id="content"
             className={
-              this.state.currentItem.status === 'nonexist' ? 'hidden' : ''
+              this.state.currentItem.status === "nonexist" ? "hidden" : ""
             }
           >
-            {this.state.currentItem.body}
+            {parse(String(this.state.currentItem.body))}
           </code>
           <div
             id="modal"
             className={
-              this.state.currentItem.status === 'nonexist' ? '' : 'hidden'
+              this.state.currentItem.status === "nonexist" ? "" : "hidden"
             }
           >
             <div className="modal-content">
@@ -149,14 +149,14 @@ export default class App extends Component {
               >
                 취소
               </button>
-              <span className={this.state.nowSaving ? '' : 'hidden'}>
+              <span className={this.state.nowSaving ? "" : "hidden"}>
                 저장 중...
               </span>
             </div>
           </div>
         </div>
 
-        <div className={this.state.nowEditing ? '' : 'hidden'}>
+        <div className={this.state.nowEditing ? "" : "hidden"}>
           <header>
             <button onClick={this.handleClickSaveSource.bind(this)}>
               BACK TO HOME
@@ -173,7 +173,7 @@ export default class App extends Component {
                 className="open-modal-btn"
                 onClick={this.openModalHandler}
               >
-                Open Modal
+                Insert URL
               </button>
 
               <Modal
