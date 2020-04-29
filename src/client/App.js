@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./app.css";
 import Modal from "./Modal/Modal";
-import parse from "html-react-parser";
+import ReactHtmlParser from "react-html-parser";
 
 export default class App extends Component {
   state = {
@@ -127,7 +127,7 @@ export default class App extends Component {
               this.state.currentItem.status === "nonexist" ? "hidden" : ""
             }
           >
-            {parse(String(this.state.currentItem.body))}
+            {ReactHtmlParser(this.state.currentItem.body)}
           </code>
           <div
             id="modal"

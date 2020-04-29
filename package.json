@@ -22,9 +22,14 @@
     "express": "^4.16.3",
     "html-react-parser": "^0.10.3",
     "jsdom": "^13.0.0",
+    "node-fetch": "^2.6.0",
+    "parser": "^0.1.4",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-modal": "^3.11.2"
+    "react-html": "^2.1.0",
+    "react-html-parser": "^2.0.2",
+    "react-modal": "^3.11.2",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

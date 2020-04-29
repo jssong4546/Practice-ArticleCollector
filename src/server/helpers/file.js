@@ -9,7 +9,6 @@ async function writeFile(filename, body) {
         reject(err);
       } else {
         resolve(body);
-        console.log(body);
       }
     });
   });
