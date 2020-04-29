@@ -1,5 +1,0 @@
-https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4
-https://medium.com/@songal4546/react%EB%9E%80-props-82a031a393fb
-https://velog.io/@chajanee/%EA%B0%9C%EB%B0%9C-%EC%9E%85%EB%AC%B8-5%EA%B0%9C%EC%9B%94%EC%B0%A8-%ED%96%87%EB%B3%91%EC%95%84%EB%A6%AC-%EA%B0%9C%EB%B0%9C%EC%9E%90
-https://medium.com/@songal4546/time-complexity-%EC%8B%9C%EA%B0%84%EB%B3%B5%EC%9E%A1%EB%8F%84-d665410f8f3a
-https://dailyheumsi.tistory.com/6
