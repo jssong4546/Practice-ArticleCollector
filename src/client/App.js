@@ -158,6 +158,9 @@ export default class App extends Component {
 
         <div className={this.state.nowEditing ? '' : 'hidden'}>
           <header>
+            <button onClick={this.handleClickSaveSource.bind(this)}>
+              BACK TO HOME
+            </button>
             <div>
               {this.state.isShowing ? (
                 <div

@@ -36,14 +36,8 @@ const modal = (props) => {
           <textarea value={props.sources} onChange={props.handleChangeValue} />
         </div>
         <div className="modal-footer">
-          <button className="btn-cancel" onClick={props.close}>
-            CLOSE
-          </button>
-          <button
-            className="btn-continue"
-            onClick={props.handleClickSaveSource}
-          >
-            SAVE
+          <button className="btn-continue" onClick={props.close}>
+            SAVE & CLOSE
           </button>
         </div>
       </div>
