@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './app.css';
+import Modal from './Modal/Modal';
 
 export default class App extends Component {
   state = {
+    isShowing: false,
     nowEditing: false,
     nowSaving: false,
     currentItem: {
@@ -10,6 +12,18 @@ export default class App extends Component {
       body: null,
       status: null,
     },
+  };
+
+  openModalHandler = () => {
+    this.setState({
+      isShowing: true,
+    });
+  };
+
+  closeModalHandler = () => {
+    this.setState({
+      isShowing: false,
+    });
   };
 
   componentDidMount() {
@@ -144,29 +158,31 @@ export default class App extends Component {
 
         <div className={this.state.nowEditing ? '' : 'hidden'}>
           <header>
-            <button onClick={this.handleClickSaveSource.bind(this)}>
-              저장
-            </button>
+            <div>
+              {this.state.isShowing ? (
+                <div
+                  onClick={this.closeModalHandler}
+                  className="back-drop"
+                ></div>
+              ) : null}
+
+              <button
+                className="open-modal-btn"
+                onClick={this.openModalHandler}
+              >
+                Open Modal
+              </button>
+
+              <Modal
+                className="modal"
+                show={this.state.isShowing}
+                close={this.closeModalHandler}
+                sources={sources}
+                handleChangeValue={this.handleChangeValue.bind(this)}
+                handleClickSaveSource={this.handleClickSaveSource.bind(this)}
+              ></Modal>
+            </div>
           </header>
-          <div>
-            <p>
-              내용을 가져올
-              <a href="https://medium.com/" target="_blank">
-                Medium
-              </a>
-              post URL을 한줄씩 입력하세요.
-            </p>
-            <p>
-              예:
-              <code>
-                https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4
-              </code>
-            </p>
-          </div>
-          <textarea
-            value={sources}
-            onChange={this.handleChangeValue.bind(this)}
-          />
         </div>
       </div>
     );
