@@ -1,5 +1,5 @@
-import React from 'react';
-import './Modal.css';
+import React from "react";
+import "./Modal.css";
 
 const modal = (props) => {
   return (
@@ -7,8 +7,8 @@ const modal = (props) => {
       <div
         className="modal-wrapper"
         style={{
-          transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
-          opacity: props.show ? '1' : '0',
+          transform: props.show ? "translateY(0vh)" : "translateY(-100vh)",
+          opacity: props.show ? "1" : "0",
         }}
       >
         <div className="modal-header">
@@ -33,6 +33,8 @@ const modal = (props) => {
               </code>
             </p>
           </div>
+          {/* <input type="text" placeholder="medium URL을 입력하세요" /> */}
+          {/* <div onChange={props.handleChangeValue}>{props.sources}</div> */}
           <textarea value={props.sources} onChange={props.handleChangeValue} />
         </div>
         <div className="modal-footer">
